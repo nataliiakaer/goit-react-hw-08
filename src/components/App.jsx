@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchContacts } from "../redux/contacts/operations";
 import { selectError, selectIsLoading } from "../redux/contacts/selectors";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,14 +19,20 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm>
-        {isLoading && !error && <b>Request in progress...</b>}
-      </ContactForm>
-      <SearchBox />
-      <ContactList />
-    </div>
+    <>
+      <div>
+        <h1 className={css.title}>Phonebook</h1>
+        <ContactForm>
+          {isLoading && !error && <b>Request in progress...</b>}
+        </ContactForm>
+        <SearchBox />
+        <ContactList />
+
+        <Routes>
+          <Route>Home</Route>
+        </Routes>
+      </div>
+    </>
   );
 };
 
