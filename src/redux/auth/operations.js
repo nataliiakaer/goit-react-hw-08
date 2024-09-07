@@ -14,7 +14,6 @@ export const loginUserApi = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await instance.post("users/login", formData);
-      console.log(data);
       setAuthHeaders(data.token);
       return data;
     } catch (error) {
@@ -28,7 +27,7 @@ export const registerUserApi = createAsyncThunk(
   async (formData, thunkApi) => {
     try {
       const { data } = await instance.post("users/signup", formData);
-      console.log(data);
+      setAuthHeaders(data.token);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.massage);

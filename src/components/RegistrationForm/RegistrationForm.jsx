@@ -1,8 +1,9 @@
 import { Form, ErrorMessage, Field, Formik } from "formik";
 import * as Yup from "yup";
 import css from "./RegistrationForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUserApi } from "../../redux/auth/operations";
+import { selectorAuthError } from "../../redux/auth/selectors";
 
 const INITIAL_VALUES = {
   name: "",
@@ -12,6 +13,7 @@ const INITIAL_VALUES = {
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const error = useSelector(selectorAuthError);
 
   const handleSubmit = (value, actions) => {
     dispatch(registerUserApi(value));
@@ -71,6 +73,7 @@ const RegistrationForm = () => {
         <button className={css.submitBnt} type="submit">
           Register
         </button>
+        {error && <p>Oops, some error... ${error}</p>}
       </Form>
     </Formik>
   );
