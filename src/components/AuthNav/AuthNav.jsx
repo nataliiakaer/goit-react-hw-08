@@ -14,7 +14,7 @@ const AuthNav = () => {
       </NavLink>
       <NavLink to="/login" className={activeLinkClass}>
         Log In
-      </NavLink>{" "}
+      </NavLink>
     </nav>
   );
 };

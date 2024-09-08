@@ -2,7 +2,7 @@ import { Form, ErrorMessage, Field, Formik } from "formik";
 import * as Yup from "yup";
 import css from "./LoginForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUserApi } from "../../redux/auth/operations";
+import { login } from "../../redux/auth/operations";
 import { selectorAuthError } from "../../redux/auth/selectors";
 
 const INITIAL_VALUES = {
@@ -15,7 +15,14 @@ const LoginForm = () => {
   const error = useSelector(selectorAuthError);
 
   const handleSubmit = (value, actions) => {
-    dispatch(loginUserApi(value));
+    dispatch(login(value))
+      .unwrap()
+      .then(() => {
+        console.log("login success");
+      })
+      .catch(() => {
+        alert("login error");
+      });
 
     actions.resetForm();
   };
@@ -58,7 +65,9 @@ const LoginForm = () => {
         <button className={css.submitBnt} type="submit">
           Log In
         </button>
-        {error && <p>Oops, some error... ${error}</p>}
+        {error && (
+          <p className={css.errorText}>Oops, some error occured... {error}</p>
+        )}
       </Form>
     </Formik>
   );
