@@ -21,7 +21,7 @@ const LoginForm = () => {
         console.log("login success");
       })
       .catch(() => {
-        alert("login error");
+        alert("Email or Password is incorrect");
       });
 
     actions.resetForm();

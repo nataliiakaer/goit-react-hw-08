@@ -47,5 +47,23 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(error.massage);
     }
+  },
+  {
+    condition: (_, thunkApi) => {
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+      if (token) return true;
+      return false;
+    },
   }
 );
+
+export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+  try {
+    await instance.post("/users/logout");
+    setAuthHeaders("");
+    return;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});

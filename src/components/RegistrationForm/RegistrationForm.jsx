@@ -14,7 +14,6 @@ const INITIAL_VALUES = {
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const error = useSelector(selectorAuthError);
-  console.log(error);
 
   const handleSubmit = (value, actions) => {
     dispatch(register(value));

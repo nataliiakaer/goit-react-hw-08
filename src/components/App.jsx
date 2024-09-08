@@ -5,6 +5,8 @@ import Layout from "./Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { selectorAuthIsRefreshing } from "../redux/auth/selectors";
 import { refreshUser } from "../redux/auth/operations";
+import RestrictedRoute from "./RestrictedRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RegistrationForm = lazy(() =>
@@ -27,9 +29,18 @@ const App = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route
+          path="/register"
+          element={<RestrictedRoute component={<RegistrationForm />} />}
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
+        />
+        <Route
+          path="/contacts"
+          element={<PrivateRoute component={<ContactsPage />} />}
+        />
       </Routes>
     </Layout>
   );
