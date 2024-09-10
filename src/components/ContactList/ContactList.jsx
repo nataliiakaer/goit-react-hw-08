@@ -3,6 +3,7 @@ import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 import { selectFilteredContacts } from "../../redux/filters/selectors";
+import toast from "react-hot-toast";
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,14 @@ const ContactList = () => {
 
   const onDeleteContact = (contactId) => {
     const action = deleteContact(contactId);
-    dispatch(action);
+    dispatch(action)
+      .unwrap()
+      .then(() => {
+        toast("Contact deleted successly");
+      })
+      .catch(() => {
+        toast("Some wrong, please try again");
+      });
   };
 
   return (

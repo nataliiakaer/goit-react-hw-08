@@ -4,6 +4,7 @@ import css from "./LoginForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { selectorAuthError } from "../../redux/auth/selectors";
+import toast from "react-hot-toast";
 
 const INITIAL_VALUES = {
   email: "",
@@ -18,10 +19,10 @@ const LoginForm = () => {
     dispatch(login(value))
       .unwrap()
       .then(() => {
-        console.log("login success");
+        toast("Login success");
       })
       .catch(() => {
-        alert("Email or Password is incorrect");
+        toast("Email or Password is incorrect");
       });
 
     actions.resetForm();
