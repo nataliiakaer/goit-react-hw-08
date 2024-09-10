@@ -2,18 +2,4 @@
   display: flex;
   gap: 8px;
   align-items: center;
-
-}
-
-.deleteBtn {
-  width: 60px;
-  height: 26px;
-  cursor: pointer;
-}
-
-.deleteBtn:hover,
-.deleteBtn:focus {
-  background-color: rgb(165, 230, 241);
-  color: white;
-  border-color: white;
 }

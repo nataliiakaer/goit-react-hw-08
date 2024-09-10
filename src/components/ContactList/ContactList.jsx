@@ -15,10 +15,7 @@ const ContactList = () => {
     dispatch(action)
       .unwrap()
       .then(() => {
-        toast("Contact deleted successly");
-      })
-      .catch(() => {
-        toast("Some wrong, please try again");
+        toast("Contact deleted successfully");
       });
   };
 
