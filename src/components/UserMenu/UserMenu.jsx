@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectorAuthUser } from "../../redux/auth/selectors";
+import { Link } from "react-router-dom";
 import { logout } from "../../redux/auth/operations";
+import { Button } from "@mui/material";
+import css from "./UserMenu.module.css";
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -11,13 +14,13 @@ const UserMenu = () => {
   };
 
   return (
-    <div>
-      <div>
-        <p>Welcome, {user.name}</p>
-        <button type="button" onClick={onLogout}>
+    <div className={css.container}>
+      <p className={css.text}>Welcome, {user.name}</p>
+      <Link to="/">
+        <Button variant="contained" type="button" onClick={onLogout}>
           Logout
-        </button>
-      </div>
+        </Button>
+      </Link>
     </div>
   );
 };

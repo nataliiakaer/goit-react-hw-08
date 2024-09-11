@@ -4,6 +4,7 @@ import css from "./RegistrationForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { selectorAuthError } from "../../redux/auth/selectors";
+import { Button } from "@mui/material";
 
 const INITIAL_VALUES = {
   name: "",
@@ -70,9 +71,7 @@ const RegistrationForm = () => {
             component="span"
           />
         </label>
-        <button className={css.submitBnt} type="submit">
-          Register
-        </button>
+        <Button className={css.submitBnt} variant="contained" type="submit">Register</Button>
         {error && (
           <p className={css.errorText}>Oops, some error occured... {error}</p>
         )}

@@ -5,6 +5,8 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import { selectError, selectIsLoading } from "../../redux/contacts/selectors";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
+import css from "./ContactsPage.module.css";
+
 
 const ContactsPage = () => {
   const isLoading = useSelector(selectIsLoading);
@@ -17,7 +19,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.section} >
       <h1>Phonebook</h1>
       <ContactForm>
         {isLoading && !error && <b>Request in progress...</b>}

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import toast from "react-hot-toast";
-import { Fab, IconButton, Tooltip } from "@mui/material";
+import { Fab, Tooltip } from "@mui/material";
 import { IoMdAdd } from "react-icons/io";
 
 const INITIAL_VALUES = { contactName: "", contactNumber: "" };
@@ -69,12 +69,10 @@ const ContactForm = () => {
             />
           </label>
         </div>
-        <Tooltip title="Add contact" className={css.submitBnt}>
-          <IconButton type="submit">
-            <Fab size="small" color="primary" aria-label="add">
-              <IoMdAdd />
-            </Fab>
-          </IconButton>
+        <Tooltip title="Add contact">
+          <Fab size="small" color="primary" aria-label="add" type="submit">
+            <IoMdAdd />
+          </Fab>
         </Tooltip>
       </Form>
     </Formik>

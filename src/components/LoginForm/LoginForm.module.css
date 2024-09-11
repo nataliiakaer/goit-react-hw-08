@@ -1,14 +1,20 @@
 .form {
-  border: 1px solid #212121;
+  background-color: #d5ebf0;
+  border-radius: 4%;
   padding: 16px;
   margin-bottom: 20px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .label {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  width: 100%;
 }
 
 .submitBnt {
@@ -20,12 +26,6 @@
   font-size: 16px;
   justify-content: center;
   align-items: center;
-}
-
-.submitBnt:hover,
-.submitBnt:focus {
-  background-color: rgb(241, 233, 165);
-  border-color: white;
 }
 
 .errorText {

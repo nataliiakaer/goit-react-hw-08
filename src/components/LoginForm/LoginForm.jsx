@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { selectorAuthError } from "../../redux/auth/selectors";
 import toast from "react-hot-toast";
+import { Button } from "@mui/material";
 
 const INITIAL_VALUES = {
   email: "",
@@ -63,9 +64,8 @@ const LoginForm = () => {
             component="span"
           />
         </label>
-        <button className={css.submitBnt} type="submit">
-          Log In
-        </button>
+        <Button className={css.submitBnt} variant="contained" type="submit">Log In</Button>
+
         {error && (
           <p className={css.errorText}>Oops, some error occured... {error}</p>
         )}
